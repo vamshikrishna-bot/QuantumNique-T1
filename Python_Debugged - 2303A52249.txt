@@ -1,0 +1,689 @@
+======================================================================
+LEVEL 1
+======================================================================
+
+Q1.
+age = 20
+if age >= 18:
+print("Eligible")
+
+print() is not indented
+syntax error
+
+age = 20
+if age >= 18:
+   print("Eligible")
+
+
+
+Q2.
+x = 5
+if x = 10:
+    print(x)
+
+condition must contains == (syntax error)
+
+x = 5
+if x == 10:
+    print(x)
+
+
+
+
+Q3. The user enters 10 and 20. Expected output: 30.
+a = input("A: ")
+b = input("B: ")
+print(a + b)
+
+input returns string in this it will concadinates like 1020
+so convert into int
+
+a = int(input("A: "))
+b = int(input("B: "))
+print(a + b)
+
+
+
+
+Q4. Expected output: 2.5
+total = 5
+count = 2
+average = total // count
+print(average)
+
+it has logical error // use / so it will gives float
+
+total = 5
+count = 2
+average = total / count
+print(average)
+
+
+
+
+Q5. Expected independent lists on every call.
+def add_item(item, items=[]):
+    items.append(item)
+    return items
+print(add_item("a"))
+print(add_item("b"))
+
+list is created only once (logical error)
+
+def add_item(item, items):
+    if items is None:
+       items=[]
+    items.append(item)
+    return items
+print(add_item("a"))
+print(add_item("b"))
+
+
+
+
+Q6. Expected: print indices 0, 1 and 2 safely.
+values = [10, 20, 30]
+for i in range(len(values) + 1):
+    print(values[i])
+
+length is out of index 3 is not exists so
+
+values = [10, 20, 30]
+for i in range(len(values)):
+    print(values[i])
+
+
+
+Q7. Expected: print 1 through 5 and terminate.
+i = 1
+while i <= 5:
+    print(i)
+
+i is not increased 
+i = 1
+while i <= 5:
+    print(i)
+    i+=1
+
+
+
+
+Q8. Expected: print only odd values, but changing i has no effect.
+for i in range(1, 6):
+    if i % 2 == 0:
+        i += 1
+    print(i)
+
+i inside loop does not change
+for i in range(1, 6):
+    if i % 2 == 0:
+       print(i)
+
+
+
+
+Q9. Expected output: 120
+n = 5
+factorial = 0
+for i in range(1, n + 1):
+    factorial *= i
+print(factorial)
+
+factorial=0 remains 0 only because it was multiplying so
+n = 5
+factorial = 1
+for i in range(1, n + 1):
+    factorial *= i
+print(factorial)
+
+
+
+
+Q10. Expected: 1 is not prime.
+n = 1
+is_prime = True
+for i in range(2, int(n ** 0.5) + 1):
+    if n % i == 0:
+        is_prime = False
+print("Prime" if is_prime else "Not prime")
+
+
+1 is not prime (logical error)
+
+n = 1
+is_prime = n>=2
+for i in range(2, int(n ** 0.5) + 1):
+    if n % i == 0:
+        is_prime = False
+print("Prime" if is_prime else "Not prime")
+
+
+
+
+
+
+======================================================================
+LEVEL 2 – LISTS, STRINGS AND BASIC ALGORITHMS
+======================================================================
+
+
+
+Q11. Expected output: -2
+values = [-8, -2, -10]
+maximum = 0
+for value in values:
+    if value > maximum:
+        maximum = value
+print(maximum)
+
+here maximum is 0 so it fails all (set maximum=values[0])
+
+values = [-8, -2, -10]
+maximum = values[0]
+for value in values:
+    if value > maximum:
+        maximum = value
+print(maximum)
+
+
+
+
+Q12. Expected output: approximately 2.3333333333333335
+values = [1, 2, 4]
+print(sum(values) // len(values))
+
+here // is not give float so use /
+values = [1, 2, 4]
+print(sum(values) / len(values))
+
+
+
+
+Q13. Expected output: nohtyp
+text = "python"
+for i in range(len(text), -1, -1):
+    print(text[i], end="")
+
+first i is 6 so
+text = "python"
+for i in range(len(text)-1, -1, -1):
+    print(text[i], end="")
+
+
+
+
+Q14. Expected: "abca" is not a palindrome.
+text = "abca"
+is_palindrome = True
+for i in range(len(text) // 2):
+    if text[i] != text[-1 - i]:
+        is_palindrome = False
+    break
+print(is_palindrome)
+
+here break executes after the 1st function
+so move break inside
+
+text = "abca"
+is_palindrome = True
+for i in range(len(text) // 2):
+    if text[i] != text[-1 - i]:
+        is_palindrome = False
+        break
+print(is_palindrome)
+
+
+
+
+
+Q15. Expected vowel count for "team": 2.
+text = "team"
+count = 0
+for ch in text:
+    if ch == "a" or "e" or "i" or "o" or "u":
+        count += 1
+print(count)
+
+here in i condition no use of or use it in one condition
+
+text = "team"
+count = 0
+for ch in text:
+    if ch in "aeiou":
+        count += 1
+print(count)
+
+
+
+
+Q16. Changing grid[0][0] unexpectedly changes every row.
+grid = [[0] * 3] * 3
+grid[0][0] = 1
+print(grid)
+
+all rows are refering same list so
+
+
+grid = [[0] * 3 for _ in range(3)]
+grid[0][0] = 1
+print(grid)
+
+
+
+
+Q17. Expected backup to remain unchanged.
+original = [[1, 2], [3, 4]]
+backup = original.copy()
+original[0][0] = 99
+print(backup)
+
+
+
+
+
+Q18. Remove all even numbers.
+values = [1, 2, 3, 4, 6]
+for value in values:
+    if value % 2 == 0:
+        values.remove(value)
+print(values)
+
+
+logical error
+values = [value for value in values if value % 2 != 0]
+print(values)
+
+
+
+
+Q19. Expected sorted result: [1, 2, 3]
+values = [3, 1, 2]
+values = values.sort()
+print(values)
+
+sort modifies the list so no need of storing
+
+values = [3, 1, 2]
+values.sort()
+print(values)
+
+
+
+
+
+Q20. Expected values to become [1, 2, 3].
+values = [1, 2]
+values = values.append(3)
+print(values)
+
+here also no need of storing 
+
+values = [1, 2]
+values.append(3)
+print(values)
+
+
+
+======================================================================
+LEVEL 3 – DSA, DICTIONARIES, SETS AND STRING BEHAVIOR
+======================================================================
+
+
+
+Q21. Debug this binary search for absent target 10.
+values = [1, 3, 5, 7, 9]
+low, high = 0, len(values)
+while low <= high:
+    mid = (low + high) // 2
+    if values[mid] == 10:
+        break
+    if values[mid] < 10:
+        low = mid + 1
+    else:
+        high = mid - 1
+
+here boundary means out of bound use len(values) - 1
+values = [1, 3, 5, 7, 9]
+low, high = 0, len(values) - 1
+while low <= high:
+    mid = (low + high) // 2
+    if values[mid] == 10:
+        break
+    if values[mid] < 10:
+        low = mid + 1
+    else:
+        high = mid - 1
+
+
+
+
+
+Q22. Debug the inner-loop boundary.
+values = [3, 2, 1]
+for i in range(len(values)):
+    for j in range(len(values) - i):
+        if values[j] > values[j + 1]:
+            values[j], values[j + 1] = values[j + 1], values[j]
+
+here j reaches out of range so 
+values = [3, 2, 1]
+for i in range(len(values)):
+    for j in range(len(values) - i - 1):
+        if values[j] > values[j + 1]:
+            values[j], values[j + 1] = values[j + 1], values[j]
+
+
+
+
+
+Q23. The merged result loses elements.
+a = [1, 4, 7]
+b = [2, 3, 9]
+result = []
+i = j = 0
+while i < len(a) and j < len(b):
+    if a[i] < b[j]:
+        result.append(a[i]); i += 1
+    else:
+        result.append(b[j]); j += 1
+
+extend the result
+
+a = [1, 4, 7]
+b = [2, 3, 9]
+result = []
+i = j = 0
+while i < len(a) and j < len(b):
+    if a[i] < b[j]:
+        result.append(a[i]); 
+		i += 1
+    else:
+        result.append(b[j]); 
+		j += 1
+result.extend(a[i:])
+result.extend(b[j:])
+print(result)
+
+
+
+
+
+Q24. This two-pointer search assumes it can be used on the given list.
+values = [8, 1, 6, 3]
+target = 9
+left, right = 0, len(values) - 1
+while left < right:
+    total = values[left] + values[right]
+    if total == target: break
+    if total < target: left += 1
+    else: right -= 1
+
+here binary search is used for only sorted list use sorted list
+values = [8, 1, 6, 3]
+values.sort()
+target = 9
+left, right = 0, len(values) - 1
+while left < right:
+    total = values[left] + values[right]
+    if total == target: break
+    if total < target: left += 1
+    else: right -= 1
+
+
+
+
+Q25.
+counts = {}
+word = "python"
+counts[word] += 1
+
+does not exists dict so
+
+word = "python"
+counts[word] = count.get(word,0)+1
+print(counts)
+
+
+
+
+
+Q26. Remove entries with zero value.
+scores = {"a": 1, "b": 0, "c": 2}
+for key, value in scores.items():
+    if value == 0:
+        del scores[key]
+
+keep range in list 
+
+scores = {"a": 1, "b": 0, "c": 2}
+for key, value in list(scores.items()):
+    if value == 0:
+        del scores[key]
+
+
+
+
+Q27. Expected values to always print in insertion order.
+values = {3, 1, 2}
+print(list(values))
+
+here also use list set is not use for insertion
+
+values = [3, 1, 2]
+print(list(values))
+
+
+
+Q28. Expected: remove the largest value first.
+import heapq
+values = [5, 1, 9]
+heapq.heapify(values)
+print(heapq.heappop(values))
+
+python heapq means min heap
+
+
+
+Q29.
+point = (10, 20)
+point[0] = 99
+
+here also tuples are immutable so use list
+point = [10, 20]
+point[0] = 99
+
+
+
+
+
+Q30. Expected output: Jxvx
+text = "Java"
+text.replace("a", "x")
+print(text)
+
+strings are immutable  store it in separate variable
+
+text = "Java"
+text = text.replace("a", "x")
+print(text)
+
+
+
+
+======================================================================
+LEVEL 4 – FUNCTIONS, OOP AND EXCEPTIONS
+======================================================================
+
+Q31. Expected: the two large integer values should compare by value.
+a = int("1000000")
+b = int("1000000")
+print(a is b)
+
+Q32. Each Student should have an independent course list.
+class Student:
+    courses = []
+
+    def add_course(self, course):
+        self.courses.append(course)
+
+Q33.
+class Calculator:
+    def add(a, b):
+        return a + b
+
+calc = Calculator()
+print(calc.add(2, 3))
+
+Q34. The developer expects Java-style method overloading.
+class Printer:
+    def show(self, value):
+        print("One argument", value)
+
+    def show(self, first, second):
+        print("Two arguments", first, second)
+
+Printer().show(10)
+
+Q35. Assigning account.balance causes infinite recursion.
+class Account:
+    def __init__(self):
+        self.balance = 0
+
+    @property
+    def balance(self):
+        return self.balance
+
+    @balance.setter
+    def balance(self, value):
+        self.balance = value
+
+Q36. Comparing a Student with an int throws an exception.
+class Student:
+    def __init__(self, mark):
+        self.mark = mark
+
+    def __eq__(self, other):
+        return self.mark == other.mark
+
+print(Student(90) == 90)
+
+Q37. Child.show() fails because name was never initialized.
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+class Child(Parent):
+    def __init__(self, name, grade):
+        self.grade = grade
+
+    def show(self):
+        print(self.name, self.grade)
+
+Q38. Debug the exception-block order.
+try:
+    value = 10 / 0
+except Exception:
+    print("General")
+except ZeroDivisionError:
+    print("Division")
+
+Q39. Predict and explain the returned value.
+def result():
+    try:
+        return 1
+    finally:
+        return 2
+
+Q40. Ensure the file is closed even if processing fails.
+file = open("data.txt", "r")
+content = file.read()
+process(content)
+file.close()
+
+======================================================================
+LEVEL 5 – RECURSION, DATA STRUCTURES, THREADS AND ASYNC
+======================================================================
+
+Q41. Expected total(5) = 15.
+def total(n):
+    if n == 0:
+        return 0
+    return n + total(n)
+
+Q42. Expected factorial(0) = 1.
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+Q43. This function is correct for small inputs but unusably slow for n = 45.
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+Q44. Debug recursive binary search when values[mid] < target.
+def search(values, low, high, target):
+    if low > high:
+        return -1
+    mid = (low + high) // 2
+    if values[mid] == target:
+        return mid
+    if values[mid] < target:
+        return search(values, mid, high, target)
+    return search(values, low, mid - 1, target)
+
+Q45. This linked-list traversal never finishes.
+current = head
+while current is not None:
+    print(current.data)
+
+Q46. Delete the head node containing target without an AttributeError.
+current = head
+previous = None
+while current is not None:
+    if current.data == target:
+        previous.next = current.next
+        break
+    previous = current
+    current = current.next
+
+Q47. Expected maximum for a tree containing {-10, -3, -20}: -3.
+def tree_max(root):
+    if root is None:
+        return 0
+    return max(root.data, tree_max(root.left), tree_max(root.right))
+
+Q48. This DFS fails on a graph cycle.
+def dfs(node, graph, visited):
+    for neighbour in graph[node]:
+        if neighbour not in visited:
+            dfs(neighbour, graph, visited)
+    visited.add(node)
+
+Q49. Expected final value: 200000. Explain why relying on shared mutation is
+unsafe and correct it.
+from threading import Thread
+counter = 0
+
+def increment():
+    global counter
+    for _ in range(100000):
+        counter += 1
+
+t1 = Thread(target=increment)
+t2 = Thread(target=increment)
+t1.start(); t2.start()
+t1.join(); t2.join()
+print(counter)
+
+Q50. The coroutine does not run and Python reports it was never awaited.
+import asyncio
+
+async def fetch_data():
+    await asyncio.sleep(1)
+    return "done"
+
+result = fetch_data()
+print(result)
+
