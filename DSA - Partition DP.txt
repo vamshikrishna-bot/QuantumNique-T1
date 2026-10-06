@@ -1,0 +1,64 @@
+Partition DP
+
+1) Minimum Cost to Cut a Stick
+    def minCost(self, n, cuts):
+        cuts.sort()
+        cuts=[0]+cuts+[n]
+        dp={}
+        def solve(i,j):
+            ans=float('inf')
+            if i+1==j:
+                return 0
+            if (i,j) in dp:
+                return dp[(i,j)]
+            for k in range(i+1,j):
+                left=solve(i,k)
+                right=solve(k,j)
+                curr=left+right+(cuts[j]-cuts[i])
+                ans=min(ans,curr)
+            dp[(i,j)]=ans
+            return ans
+        return solve(0,len(cuts)-1)
+
+
+
+
+2) Matrix Chain Multiplication
+def matrixMultiplication(self, arr):        
+        dp={}
+        def solve(i, j):
+            if i == j:
+                 return 0
+            if (i,j) in dp:
+                return dp[(i,j)]
+              
+            answer = float("inf")
+              
+            for k in range(i, j):
+                left = solve(i, k)
+                right = solve(k + 1, j)
+                current = left + right + arr[i-1] * arr[k] * arr[j]
+                answer = min(answer, current)
+            dp[(i,j)]=answer
+            return answer
+        return solve(1,len(arr)-1)
+
+
+
+3) Minimum Cost to Merge Numbers 
+    def mergeStones(self, stones: list[int], k: int) -> int:
+
+        def solve(i, j)
+            if i == j:
+                return 0
+
+            tot = float('inf')
+
+            for x in range(i, j):
+                left = solve(i, x)
+                right = solve(x + 1, j)
+                merge = sum(stones[i:j + 1])
+                total = left + right + merge
+                tot = min(tot, total)
+            return tot
+        return solve(0, len(stones) - 1)
