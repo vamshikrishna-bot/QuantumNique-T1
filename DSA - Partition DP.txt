@@ -1,4 +1,4 @@
-Partition DP
+#Partition DP with memorization
 
 1) Minimum Cost to Cut a Stick
     def minCost(self, n, cuts):
