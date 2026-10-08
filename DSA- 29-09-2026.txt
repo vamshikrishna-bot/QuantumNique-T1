@@ -1,5 +1,6 @@
 
-1)Longest Subarray with Sum K
+1)Longest Subarray with Sum K 
+
     def longestSubarray(arr, k):
         prefix = 0
         c = 0
@@ -22,6 +23,7 @@
 
 
 3)Merge Overlapping Intervals
+
     def merge(self, intervals):
         intervals.sort()
 
@@ -36,7 +38,9 @@
         return result
 
 
+
 6)Lowest Common Ancestor in Binary Tree
+
    def lowestCommonAncestor(self, root, p, q):
         if root is None:
             return None
@@ -57,7 +61,9 @@
 
 
 
+
 9) Minimum Coins for Amount
+
    def coinChange(self, coins, amount):
         dp = [amount + 1] * (amount + 1)
         dp[0] = 0
