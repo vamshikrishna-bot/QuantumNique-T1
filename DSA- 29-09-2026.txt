@@ -1,81 +1,76 @@
 
 1)Longest Subarray with Sum K 
-
-    def longestSubarray(arr, k):
-        prefix = 0
+    def lsa(a, k):
+        px = 0
         c = 0
         d = {}
-
         for i in range(len(arr)):
-            prefix += arr[i]
-
-            if prefix == k:
+            px += a[i]
+            if px == k:
                 c = i + 1
-
             if prefix - k in d:
-                c = max(c, i - d[prefix - k])
-
-            if prefix not in d:
-                d[prefix] = i
-
+                c = max(c, i - d[px - k])
+            if px not in d:
+                d[px] = i
         return c
 
 
 
 3)Merge Overlapping Intervals
-
-    def merge(self, intervals):
+    def merge(intervals):
         intervals.sort()
-
-        result = []
-
-        for interval in intervals:
-            if not result or result[-1][1] < interval[0]:
-                result.append(interval)
+        r = []
+        for itl in intervals:
+            if not result or result[-1][1] < itl[0]:
+                r.append(itl)
             else:
-                result[-1][1] = max(result[-1][1], interval[1])
-
-        return result
+                result[-1][1] = max(r[-1][1], itl[1])
+        return r
 
 
 
 6)Lowest Common Ancestor in Binary Tree
-
-   def lowestCommonAncestor(self, root, p, q):
+   def lca(root, p, q):
         if root is None:
             return None
-
         if root == p or root == q:
             return root
-
-        left = self.lowestCommonAncestor(root.left, p, q)
-        right = self.lowestCommonAncestor(root.right, p, q)
-
-        if left and right:
+        l = self.lca(root.left, p, q)
+        r = self.lca(root.right, p, q)
+        if l and r:
             return root
-
         if left:
-            return left
-
-        return right
+            return l
+        return r
 
 
 
 
 9) Minimum Coins for Amount
-
-   def coinChange(self, coins, amount):
+   def coinChange(coins, amount):
         dp = [amount + 1] * (amount + 1)
         dp[0] = 0
-
         for i in range(1, amount + 1):
             for coin in coins:
                 if coin <= i:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
-
         if dp[amount] == amount + 1:
             return -1
-
         return dp[amount]
 
-# Task DSA
+
+
+5)Detect and Remove Cycle in Linked List
+    def detectCycle(head):
+        s=head
+        f=head
+        while f!=None and f.next!=None:
+            s=s.next
+            f=f.next.next
+            if s==f:
+                s=head
+                while s!=f:
+                    s=s.next
+                    f=f.next
+                return s
+        return None
